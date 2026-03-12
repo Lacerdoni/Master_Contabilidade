@@ -1,0 +1,1 @@
+Nessa landing page pra empresa Master Contabilidade, optei por seguir com html e css básicos, visto que o projeto necessita apenas de informações por escrito e links de contato via instagram e whatsapp. 
