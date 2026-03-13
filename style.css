@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-@import url('https://fonts.googleapis.com/css2?family=Spectral+SC:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Squada+One&family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Monda:wght@400..700&family=Spectral+SC:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Squada+One&display=swap');
 
 :root {
     --cor-titulo: rgb(255, 255, 255);
@@ -11,8 +11,9 @@
     --preto-azulado: #01020c;
     --azul-papel: #c0d4e1;
 
-    --fonte-titulo: "Spectral SC", serif;
-
+    --fonte-master: "Spectral SC", serif;
+    --fonte-titulos: "Monda", sans-serif;
+    --fonte-padrao: "Squada One", sans-serif;
 }
 
 * {
@@ -47,12 +48,38 @@ header {
 
 h1 {
     font-size: 1.2rem;
-    font-family: var(--fonte-titulo);
+    font-family: var(--fonte-master);
     color: var(--cor-titulo);
     text-shadow: 2px 4px var(--azul-claro);
 }
 
+@keyframes pulse-button {
+    0%{
+        transform: translate(0px, 0%) scale(1)
 
+    }
+    44%{
+        transform: translate(0px, 0px) scale(1)
+
+    }
+
+    47% {
+        transform: translate(0px, 2px) scale(0.98);
+        
+    }
+    50%{
+        transform: translate(0px, -4px) scale(1.02);
+    
+    }
+
+    55% {
+        transform: translate(0px, 0%) scale(1);
+    }
+    
+    100%{
+       transform: translate(0px, 0%) scale(1);
+    }
+}
 
 .botao-whatsapp {
     height: 60px;
@@ -66,6 +93,8 @@ h1 {
     align-items: center;
 
     text-decoration: none;
+
+    animation: pulse-button 5s infinite;
 }
 
 .botao-whatsapp:visited {
@@ -105,25 +134,27 @@ main::before {
 
 .sessao {
     /* display: none; */
-    width: 85%;
+    width: 100vw;
     max-width: 1200px;
-    margin: 20px auto;
-    padding: 100px 10px;
+    margin: 0 auto 100px;
 
     height: 70vh;
 
     background-color: var(--azul-papel);
     box-shadow: 4px 4px 5px 2px rgba(0, 0, 0, 0.209);
-
+    
     scroll-snap-align: center;
     scroll-snap-stop: always;
 }
 
 
-h2 {
 
+
+
+h2 {
     margin: 20px;
     font-size: 3rem;
+    font-family: var(--fonte-titulos);
 }
 
 .sessao p {
@@ -131,24 +162,74 @@ h2 {
     width: 90%;
 }
 
+#sessao1{
+    background-color: #acadb39d;
+    
+}
+
+#sessao1 img {
+    width: 100vw;
+    display: block;
+    margin: auto;
+    mix-blend-mode: multiply;
+    filter: blur(1px);
+}
+#sessao1 h2 {
+    margin: 20px 0;
+    font-size: 1.8rem;
+    color: white;
+    position: relative;
+    text-shadow: 1px 2px rgba(0, 0, 0, 0.816);
+   
+    bottom: 560px;
+}
+
+#sessao1 ul {
+    font-size: 1.4rem;
+    color: rgb(242, 242, 242);
+    position: relative;
+    bottom: 550px;
+    
+}
+
+#sessao1 li {
+    margin: 28px auto;
+    text-align: left;
+    font-family: var(--fonte-padrao);
+    width: 85%;
+    text-shadow: 1px 2px rgba(0, 0, 0, 0.816);
+}
+
+
 ul {
     list-style-position: inside;
     text-align: left;
 }
 
 .reveal-left {
-  opacity: 0;
-  transform: translateX(-40px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .reveal-left.show {
-  opacity: 1;
-  transform: translateX(0);
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@media(min-width: 420px) {
+    #sessao1 img{
+        display: none;
+    }
 }
 
 @media(min-width: 640px) {
     main::before{
         background-image: url(assets/luz-background-desktop.jpg);
+    }
+    
+    .sessao{
+        background-color: var(--azul-papel);
+        
     }
 }
