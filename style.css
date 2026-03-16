@@ -112,6 +112,9 @@ main {
     background-image: linear-gradient(var(--gradiente));
     background-attachment: fixed;
 
+    display: flex;
+    flex-direction: column;
+
     height: 80vh;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
@@ -224,7 +227,7 @@ ul {
     transform: translateX(0);
 }
 
-@media(min-width: 420px) {
+@media(min-width: 480px) {
     #sessao1 img{
         display: none;
     }
