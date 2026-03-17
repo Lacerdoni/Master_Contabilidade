@@ -1,19 +1,19 @@
 @charset "UTF-8";
 
-@import url('https://fonts.googleapis.com/css2?family=Monda:wght@400..700&family=Spectral+SC:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Squada+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
-    --cor-titulo: rgb(255, 255, 255);
+    --cor-titulo: rgb(52, 52, 52);
     --azul-escuro: #02141f;
-    --azul-medio: #023A5E;
-    --azul-claro: #0f38be;
+    --azul-medio: #024D75;
+    --azul-claro: #067eba;
     --gradiente: var(--azul-claro), var(--azul-medio) 70%, var(--azul-escuro) 95%;
+    --gradiente-header: var(--azul-claro), var(--azul-medio), var(--azul-escuro);
     --preto-azulado: #01020c;
     --azul-papel: #c0d4e1;
 
-    --fonte-master: "Spectral SC", serif;
-    --fonte-titulos: "Monda", sans-serif;
-    --fonte-padrao: "Squada One", sans-serif;
+    --fonte-titulos: "IBM Plex Sans", sans-serif;
+    --fonte-padrao: "Noto Sans", sans-serif;
 }
 
 * {
@@ -28,92 +28,61 @@ html {
 
 body {
     text-align: center;
-    font-family: sans-serif;
+    font-family: var(--fonte-padrao);
+    font-size: 1.3rem;
 
 }
 
 
 header {
-    background-color: var(--preto-azulado);
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     position: sticky;
-    top: 0px;
-    z-index: 1;
-
-
-}
-
-#master-contabilidade-logo {
-    width: 100px;
-    height: auto;
-    border-radius: 50%;
-}
-
-h1 {
-    font-size: 1.2rem;
-    font-family: var(--fonte-master);
-    color: var(--cor-titulo);
-    text-shadow: 2px 4px var(--azul-claro);
-}
-
-@keyframes pulse-button {
-    0%{
-        transform: translate(0px, 0%) scale(1)
-
-    }
-    44%{
-        transform: translate(0px, 0px) scale(1)
-
-    }
-
-    47% {
-        transform: translate(0px, 2px) scale(0.98);
-        
-    }
-    50%{
-        transform: translate(0px, -4px) scale(1.02);
-    
-    }
-
-    55% {
-        transform: translate(0px, 0%) scale(1);
-    }
-    
-    100%{
-       transform: translate(0px, 0%) scale(1);
-    }
-}
-
-.botao-whatsapp {
-    height: 60px;
-    width: 140px;
-    padding-right: 10px;
-    border-radius: 20px;
-    background-color: #25D366;
+    top: 0;
 
     display: flex;
     justify-content: space-around;
     align-items: center;
+    background-image: radial-gradient(circle at 50%, var(--gradiente-header));
 
-    text-decoration: none;
+    padding: 8px 0;
 
-    animation: pulse-button 5s infinite;
+
+    z-index: 1;
 }
 
-.botao-whatsapp:visited {
-    color: rgb(0, 0, 0);
+header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+
+    background: url("assets/luz-background-desktop.jpg");
+    background-size: cover;
+
+    opacity: 0.3;
+    mix-blend-mode: overlay;
+
+    z-index: -1;
+    /* fica atrás das sessões */
+    pointer-events: none;
+}
+
+#master-contabilidade-logo {
+    width: 85px;
+    height: auto;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.side-logos {
+    width: 60px;
+    height: auto;
+
 }
 
 
 main {
     background-image: linear-gradient(var(--gradiente));
     background-attachment: fixed;
-
-    display: flex;
-    flex-direction: column;
 
     height: 80vh;
     overflow-y: scroll;
@@ -133,32 +102,99 @@ main::before {
     background: url("assets/luz-background.jpg");
     background-size: cover;
 
-    opacity: 0.7;
+    opacity: 0.6;
     mix-blend-mode: overlay;
 
-    z-index: -1;
     /* fica atrás das sessões */
+    z-index: -1;
+
     pointer-events: none;
 }
 
 .sessao {
     /* display: none; */
-    width: 100vw;
-    max-width: 1200px;
-    margin: 0 auto 100px;
+    width: 95%;
+    margin: 50px auto 50px;
 
     height: 70vh;
 
     background-color: var(--azul-papel);
     box-shadow: 4px 4px 5px 2px rgba(0, 0, 0, 0.209);
-    
+
     scroll-snap-align: center;
     scroll-snap-stop: always;
+
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
+h1 {
+    font-size: 2rem;
+    font-family: var(--fonte-titulos);
+    font-weight: 700;
+    line-height: 2.4rem;
+    min-width: 90%;
+    max-width: 500px;
+    padding: 20px 0;
+}
+
+.botao-fale-conosco {
+    height: 60px;
+    width: 180px;
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: var(--azul-medio);
 
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+    text-decoration: none;
+
+    margin: 20px auto;
+
+    animation: pulse-button 5s infinite;
+
+
+}
+
+@keyframes pulsing-text {
+    0% {
+        color: var(--azul-papel);
+        text-shadow: 0px 0px 2px black;
+        transform: scaleX(1)
+    }
+
+    50% {
+        color: rgb(255, 255, 255);
+        text-shadow: 0px 0px 2px white;
+        transform: scaleX(1.02)
+    }
+    
+    100% {
+        color: var(--azul-papel);
+        text-shadow: 0px 0px 2px black;
+        transform: scaleX(1)
+    }
+}
+
+.botao-fale-conosco p {
+    animation: pulsing-text 3s infinite;
+    font-size: 1.2rem;
+    font-weight: 700;
+    width: 100%;
+
+}
+
+.botao-fale-conosco:visited {
+    color: inherit;
+    text-decoration: none;
+}
 
 h2 {
     margin: 20px;
@@ -167,47 +203,8 @@ h2 {
 }
 
 .sessao p {
-    margin: auto;
     width: 90%;
-}
-
-#sessao1{
-    background-color: #acadb39d;
-    
-}
-
-#sessao1 img {
-    width: 100%;
-    display: block;
-    margin: auto;
-    mix-blend-mode: multiply;
-    filter: blur(1px);
-}
-
-#sessao1 h2 {
-    margin: 15px 0;
-    font-size: 1.8rem;
-    color: white;
-    position: relative;
-    text-shadow: 1px 2px rgba(0, 0, 0, 0.816);
-   
-    bottom: 570px;
-}
-
-#sessao1 ul {
-    font-size: 1.4rem;
-    color: rgb(242, 242, 242);
-    position: relative;
-    bottom: 560px;
-    
-}
-
-#sessao1 li {
-    margin: 28px auto;
-    text-align: left;
     font-family: var(--fonte-padrao);
-    width: 85%;
-    text-shadow: 1px 2px rgba(0, 0, 0, 0.816);
 }
 
 
@@ -219,7 +216,7 @@ ul {
 .reveal-left {
     opacity: 0;
     transform: translateX(-40px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .reveal-left.show {
@@ -227,19 +224,41 @@ ul {
     transform: translateX(0);
 }
 
-@media(min-width: 480px) {
-    #sessao1 img{
-        display: none;
-    }
-}
+
 
 @media(min-width: 640px) {
-    main::before{
+    .side-logos {
+        width: 80px;
+        height: auto;
+        transition: all 0.3s ease-out;
+    }
+
+    .side-logos:hover {
+        transform: scale(1.1);
+    }
+
+    main::before {
         background-image: url(assets/luz-background-desktop.jpg);
     }
-    
-    .sessao{
-        background-color: var(--azul-papel);
-        
+
+    .sessao {
+        width: 90%;
+        border-radius: 10px;
+
+    }
+
+    .botao-fale-conosco {
+        transition: all 0.3s ease;
+    }
+
+    .botao-fale-conosco:hover {
+        background-color: var(--azul-claro);
+    }
+
+
+    .botao-fale-conosco:hover p {
+        animation: none;
+        color: var(--azul-escuro);
+        text-shadow: 1px 2px var(--azul-papel);
     }
 }
