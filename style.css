@@ -7,10 +7,19 @@
     --azul-escuro: #02141f;
     --azul-medio: #024D75;
     --azul-claro: #067eba;
-    --gradiente: var(--azul-claro), var(--azul-medio) 70%, var(--azul-escuro) 95%;
-    --gradiente-header: var(--azul-claro), var(--azul-medio), var(--azul-escuro);
     --preto-azulado: #01020c;
     --azul-papel: #c0d4e1;
+
+    --gradiente: var(--azul-claro),
+        var(--azul-medio) 70%,
+        var(--azul-escuro) 95%;
+    --gradiente-header: var(--azul-claro),
+        var(--azul-medio),
+        var(--azul-escuro);
+
+    
+    --h1-text-shadow: 2px 2px rgba(27, 26, 26, 0.272);
+    --p-text-shadow: 1px 1px rgba(120, 120, 120, 0.397);
 
     --fonte-titulos: "IBM Plex Sans", sans-serif;
     --fonte-padrao: "Noto Sans", sans-serif;
@@ -30,9 +39,29 @@ body {
     text-align: center;
     font-family: var(--fonte-padrao);
     font-size: 1.3rem;
+    width: 100vw;
 
 }
 
+@keyframes pulsing-text {
+    0% {
+        color: var(--azul-papel);
+        text-shadow: 0px 0px 2px black;
+        transform: scaleX(1)
+    }
+
+    50% {
+        color: rgb(255, 255, 255);
+        text-shadow: 0px 0px 2px white;
+        transform: scaleX(1.02)
+    }
+
+    100% {
+        color: var(--azul-papel);
+        text-shadow: 0px 0px 2px black;
+        transform: scaleX(1)
+    }
+}
 
 header {
     position: sticky;
@@ -81,9 +110,11 @@ header::before {
 
 
 main {
+    background-color: var(--azul-papel);
     background-image: linear-gradient(var(--gradiente));
     background-attachment: fixed;
 
+    width: 100vw;
     height: 80vh;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
@@ -102,7 +133,7 @@ main::before {
     background: url("assets/luz-background.jpg");
     background-size: cover;
 
-    opacity: 0.6;
+    opacity: 0.7;
     mix-blend-mode: overlay;
 
     /* fica atrás das sessões */
@@ -130,16 +161,41 @@ main::before {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+
+    position: relative;
+}
+
+
+
+#sessao1::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-image: url(assets/escritorio-contabil.jpg);
+    background-size: cover;
+    mix-blend-mode: multiply;
+    opacity: 0.3;
 }
 
 h1 {
     font-size: 2rem;
     font-family: var(--fonte-titulos);
+    text-shadow: var(--h1-text-shadow);
     font-weight: 700;
     line-height: 2.4rem;
     min-width: 90%;
     max-width: 500px;
     padding: 20px 0;
+    z-index: 1;
+}
+
+.sessao p {
+    width: 90%;
+    font-family: var(--fonte-padrao);
+    font-weight: 600;
+    text-shadow: var(--p-text-shadow);
+    z-index: 1;
 }
 
 .botao-fale-conosco {
@@ -160,27 +216,7 @@ h1 {
 
     animation: pulse-button 5s infinite;
 
-
-}
-
-@keyframes pulsing-text {
-    0% {
-        color: var(--azul-papel);
-        text-shadow: 0px 0px 2px black;
-        transform: scaleX(1)
-    }
-
-    50% {
-        color: rgb(255, 255, 255);
-        text-shadow: 0px 0px 2px white;
-        transform: scaleX(1.02)
-    }
-    
-    100% {
-        color: var(--azul-papel);
-        text-shadow: 0px 0px 2px black;
-        transform: scaleX(1)
-    }
+    z-index: 1;
 }
 
 .botao-fale-conosco p {
@@ -196,16 +232,30 @@ h1 {
     text-decoration: none;
 }
 
-h2 {
-    margin: 20px;
-    font-size: 3rem;
-    font-family: var(--fonte-titulos);
+#sessao2 {
+    padding-bottom: 50px;
 }
 
-.sessao p {
-    width: 90%;
-    font-family: var(--fonte-padrao);
+
+
+#dinheiros {
+    height: 70%;
+    width: auto;
+    position: absolute;
+    top: 30%;
+    z-index: 0;
+    mix-blend-mode: multiply;
+    opacity: 0.3;
 }
+
+h2 {
+
+    font-size: 3rem;
+    font-family: var(--fonte-titulos);
+    text-shadow: 2px 2px rgba(27, 26, 26, 0.272);
+
+}
+
 
 
 ul {
@@ -260,5 +310,14 @@ ul {
         animation: none;
         color: var(--azul-escuro);
         text-shadow: 1px 2px var(--azul-papel);
+    }
+
+    #sessao2 {
+        padding-bottom: 100px;
+    }
+
+    #dinheiros {
+        height: 100%;
+        top: 0;
     }
 }
