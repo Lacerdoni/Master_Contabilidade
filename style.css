@@ -18,7 +18,7 @@
         var(--azul-escuro);
 
 
-    --h1-text-shadow: 2px 2px rgba(27, 26, 26, 0.272);
+    --titulos-text-shadow: 2px 2px 1px rgba(12, 12, 12, 0.272);
     --p-text-shadow: 1px 1px rgba(120, 120, 120, 0.397);
 
     --fonte-titulos: "IBM Plex Sans", sans-serif;
@@ -112,7 +112,6 @@ header::before {
 
 main {
 
-    background-color: var(--azul-papel);
     background-image: linear-gradient(var(--gradiente));
     background-attachment: fixed;
 
@@ -164,6 +163,7 @@ main::before {
     align-items: center;
 
     position: relative;
+    z-index: 1;
 }
 
 
@@ -177,12 +177,13 @@ main::before {
     background-size: cover;
     mix-blend-mode: multiply;
     opacity: 0.3;
+    border-radius: 10px;
 }
 
 h1 {
     font-size: 2rem;
     font-family: var(--fonte-titulos);
-    text-shadow: var(--h1-text-shadow);
+    text-shadow: var(--titulos-text-shadow);
     font-weight: 700;
     line-height: 2.4rem;
     min-width: 90%;
@@ -237,31 +238,35 @@ h1 {
     padding-bottom: 50px;
 }
 
-
-
-#dinheiros {
-    height: 70%;
-    width: auto;
+#sessao2::before {
+    content: "";
     position: absolute;
-    top: 30%;
-    z-index: 0;
+    inset: 0;
+
+    background-image: url(assets/economizando.jpg);
+    background-size: cover;
     mix-blend-mode: multiply;
     opacity: 0.3;
+    border-radius: 10px;
+    filter: blur(1px);
 }
 
 h2 {
     max-width: 85%;
     font-size: 3rem;
     font-family: var(--fonte-titulos);
-    text-shadow: 2px 2px rgba(27, 26, 26, 0.272);
+    text-shadow: var(--titulos-text-shadow);
+    z-index: 1;
+
 
 }
 
-#sessao3 h2 {
+#sessao3 h2,
+#sessao4 h2 {
     font-size: 2.3rem;
 }
 
-#sessao3 ul {
+ul {
     list-style-position: inside;
     max-width: 95%;
     text-align: left;
@@ -275,9 +280,41 @@ h2 {
 
 }
 
-#sessao4 {
-    background-color: transparent;
-    box-shadow: none;
+
+#lista-advogados li {
+    background-color: rgba(255, 255, 255, 0.173);
+    border-radius: 8px;
+    z-index: 1;
+    padding: 2px;
+}
+
+#sessao4::before {
+    content: "";
+    position: absolute;
+
+    inset: 0;
+
+    background-image: url(assets/advocacia-vertical.jpg);
+    background-size: cover;
+    mix-blend-mode: multiply;
+    opacity: 0.5;
+    border-radius: 10px;
+    filter: blur(1px);
+    z-index: 0;
+}
+
+#sessao4::after {
+    content: "";
+    position: absolute;
+
+    inset: 0;
+
+    background-color: rgba(0, 0, 0, 0.618);
+    background-size: cover;
+    opacity: 0.4;
+    z-index: 0;
+
+    border-radius: 10px;
 }
 
 /*UL com os cards de serviços*/
@@ -286,6 +323,7 @@ h2 {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
+    align-items: stretch;
     margin: auto;
     gap: 20px;
     max-width: 90%;
@@ -293,7 +331,7 @@ h2 {
 }
 
 #servicos-prestados li {
-    background-color: rgb(251, 186, 65);
+    background-color: var(--azul-papel);
     flex: 1 1 200px;
     padding: 20px 0;
     max-width: 90vw;
@@ -308,13 +346,15 @@ h2 {
 #servicos-prestados h3 {
     font-size: 1.5rem;
     max-width: 90%;
-    margin: auto;
+    text-align: center;
+    text-shadow: 1px 1px 1px rgba(12, 12, 12, 0.272);
 }
 
 #servicos-prestados p {
     font-size: 1rem;
     margin: auto;
     max-width: 90%;
+    text-shadow: var(--p-text-shadow);
 }
 
 .reveal-left {
@@ -327,7 +367,6 @@ h2 {
     opacity: 1;
     transform: translateX(0);
 }
-
 
 
 @media(min-width: 768px) {
@@ -351,6 +390,10 @@ h2 {
 
     #sessao2 {
         padding-bottom: 100px;
+    }
+
+    #sessao2::before {
+        background-image: url(assets/economizando-horizontal.jpg);
     }
 
     #dinheiros {
@@ -396,7 +439,7 @@ h2 {
         font-size: 3rem;
     }
 
-    #sessao3 ul {
+    ul {
         font-size: 1.6rem;
     }
 }
