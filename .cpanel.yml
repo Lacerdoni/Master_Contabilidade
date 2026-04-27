@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/mastercontabilrj/public_html
+    - /bin/cp -a * $DEPLOYPATH
+    - /bin/cp -a .[^.]* $DEPLOYPATH 2>/dev/null || true
